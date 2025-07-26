@@ -3,40 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Card : MonoBehaviour
+public class Card
 {
-    public bool hasBeenPlayed;
-    public int handIndex;
-    private GameManager gm;
+    private readonly CardData cardData;
 
-    void Start()
+    public Card(CardData cardData)
     {
-        gm = FindFirstObjectByType<GameManager>(); // Modern replacement for FindObjectOfType
+        this.cardData = cardData;
+        Value = cardData.Value;
+        Effect = cardData.Effect;
     }
 
-    private void OnMouseDown()
-    {
-        if (!hasBeenPlayed)
-        {
-            transform.position += Vector3.up * 5;
-            hasBeenPlayed = true;
-            StartCoroutine(MoveToDiscardPileDelayed(2f)); // Coroutine instead of Invoke
-        }
-    }
+    public Sprite Sprite => cardData.FrontSprite;
+    public Sprite SpriteBack => cardData.BackSprite;
+    public int Value { get; set; }
+    public string Effect { get; set; }
 
-    private IEnumerator MoveToDiscardPileDelayed(float delay)
+    public void PerformEffect()
     {
-        yield return new WaitForSeconds(delay);
-        MoveToDiscardPile();
-    }
-
-    void MoveToDiscardPile()
-    {
-        gm.discardPile.Add(this);
-        gameObject.SetActive(false);
-    }
-
-    void Update()
-    {
+        Debug.Log("Value is " + Value + " with an effect of " + Effect);
     }
 }

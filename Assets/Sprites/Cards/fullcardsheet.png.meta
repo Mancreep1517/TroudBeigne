@@ -1,0 +1,507 @@
+fileFormatVersion: 2
+guid: 966469ebd338e014fb10f3eecd8483f8
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4624531750243495292
+    second: fullcardsheet_0
+  - first:
+      213: -5307541686922120109
+    second: fullcardsheet_1
+  - first:
+      213: -6248155988569405112
+    second: fullcardsheet_2
+  - first:
+      213: 2744546182248765822
+    second: fullcardsheet_3
+  - first:
+      213: 5687324129765310417
+    second: fullcardsheet_4
+  - first:
+      213: -2486065994176588065
+    second: fullcardsheet_5
+  - first:
+      213: 5170048489389163751
+    second: fullcardsheet_6
+  - first:
+      213: -2499819995315284038
+    second: fullcardsheet_7
+  - first:
+      213: 5687317896525541773
+    second: fullcardsheet_8
+  - first:
+      213: -1381669382728075437
+    second: fullcardsheet_9
+  - first:
+      213: 2022825955157992123
+    second: fullcardsheet_10
+  - first:
+      213: 6468052204972756819
+    second: fullcardsheet_11
+  - first:
+      213: 6637382934453269559
+    second: fullcardsheet_12
+  - first:
+      213: 7277820917913715232
+    second: fullcardsheet_13
+  - first:
+      213: -8190633129253052820
+    second: fullcardsheet_14
+  - first:
+      213: -1167940911919004848
+    second: fullcardsheet_15
+  - first:
+      213: 6204378487910049891
+    second: fullcardsheet_16
+  - first:
+      213: 394821632648497172
+    second: fullcardsheet_17
+  - first:
+      213: 6488394435841700712
+    second: fullcardsheet_18
+  - first:
+      213: -7677670159969418076
+    second: fullcardsheet_19
+  - first:
+      213: -9110862344784954325
+    second: fullcardsheet_20
+  - first:
+      213: -859164241480884135
+    second: fullcardsheet_21
+  - first:
+      213: 312491427116287999
+    second: fullcardsheet_22
+  - first:
+      213: -8025558059894680040
+    second: fullcardsheet_23
+  - first:
+      213: -7747247289265315555
+    second: fullcardsheet_24
+  - first:
+      213: 6829406019316998430
+    second: fullcardsheet_25
+  - first:
+      213: 2062965074178860819
+    second: fullcardsheet_26
+  - first:
+      213: -498882005672454732
+    second: fullcardsheet_27
+  - first:
+      213: 5477655927811291162
+    second: fullcardsheet_28
+  - first:
+      213: 5067357413323332645
+    second: fullcardsheet_29
+  - first:
+      213: -3467888685249044650
+    second: fullcardsheet_30
+  - first:
+      213: -5148219060027936974
+    second: fullcardsheet_31
+  - first:
+      213: -8355968624071015355
+    second: fullcardsheet_32
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 25
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: fullcardsheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 192
+        width: 71
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 482983effdc52dfb0800000000000000
+      internalID: -4624531750243495292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fullcardsheet_1
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 192
+        width: 71
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 354fd60d4f2d756b0800000000000000
+      internalID: -5307541686922120109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fullcardsheet_2
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 192
+        width: 71
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84947188b371a49a0800000000000000
+      internalID: -6248155988569405112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fullcardsheet_3
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 192
+        width: 71
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7997962636961620800000000000000
+      internalID: 2744546182248765822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fullcardsheet_4
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 192
+        width: 71
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1df3b2dc92f6dee40800000000000000
+      internalID: 5687324129765310417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fullcardsheet_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 96
+        width: 71
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd61de86628bf7dd0800000000000000
+      internalID: -2486065994176588065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fullcardsheet_6
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 96
+        width: 71
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e4069185b3bfb740800000000000000
+      internalID: 5170048489389163751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fullcardsheet_7
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 96
+        width: 71
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab750d875fade4dd0800000000000000
+      internalID: -2499819995315284038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fullcardsheet_8
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 96
+        width: 71
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8170238e796dee40800000000000000
+      internalID: 5687317896525541773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fullcardsheet_9
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 96
+        width: 71
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 357b57d440353dce0800000000000000
+      internalID: -1381669382728075437
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fullcardsheet_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 71
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb2e1a32d75821c10800000000000000
+      internalID: 2022825955157992123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fullcardsheet_11
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 0
+        width: 71
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35f4512163323c950800000000000000
+      internalID: 6468052204972756819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: bce1c1cdea4a8aa419efcf95e71166f5
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":5.0,"y":3.0},"gridSpriteSize":{"x":71.0,"y":95.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":1.0,"y":1.0},"pivot":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      fullcardsheet_0: -4624531750243495292
+      fullcardsheet_1: -5307541686922120109
+      fullcardsheet_10: 2022825955157992123
+      fullcardsheet_11: 6468052204972756819
+      fullcardsheet_2: -6248155988569405112
+      fullcardsheet_3: 2744546182248765822
+      fullcardsheet_4: 5687324129765310417
+      fullcardsheet_5: -2486065994176588065
+      fullcardsheet_6: 5170048489389163751
+      fullcardsheet_7: -2499819995315284038
+      fullcardsheet_8: 5687317896525541773
+      fullcardsheet_9: -1381669382728075437
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -5,44 +5,25 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public List<Card> deck = new List<Card>();
-    public List<Card> discardPile = new List<Card>();
-    public Transform[] cardSlots;
-    public bool[] availableCardSlots;
-
-    public Text deckSizeText;
-
-    public void DrawCard()
+    [SerializeField] private List<CardData> cardDatas;
+    [SerializeField] private CardView cardView;
+    private List<Card> deck;
+    private void Start()
     {
-        if (deck.Count >= 1)
+        deck = new();
+        for (int i = 0; i < 10; i++)
         {
-            Card randCard = deck[Random.Range(0, deck.Count)];
-
-            for (int i = 0; i < availableCardSlots.Length; i++)
-            {
-                if (availableCardSlots[i] == true)
-                {
-                    randCard.gameObject.SetActive(true);
-                    randCard.handIndex = i;
-
-                    randCard.transform.position = cardSlots[i].transform.position;
-                    availableCardSlots[i] = false;
-                    deck.Remove(randCard);
-                    return;
-                }
-            }
+            CardData data = cardDatas[Random.Range(0, cardDatas.Count)];
+            Card card = new(data);
+            deck.Add(card);
         }
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void DrawCard()
     {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        //deckSizeText.text = deck.Count.ToString();
+        Card drawnCard = deck[Random.Range(0, deck.Count)];
+        deck.Remove(drawnCard);
+        CardView view = Instantiate(cardView);
+        view.Setup(drawnCard);
     }
 }
