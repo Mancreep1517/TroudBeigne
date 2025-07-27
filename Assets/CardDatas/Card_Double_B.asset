@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7957c30251ce8440b2f86746255197c, type: 3}
   m_Name: Card_Double_B
   m_EditorClassIdentifier: 
-  <Sprite>k__BackingField: {fileID: 0}
+  <FrontSprite>k__BackingField: {fileID: 0}
+  <BackSprite>k__BackingField: {fileID: 3220144058486579320, guid: 6c8d7d2d0d2d80d47bfbd10a0a9b3b87, type: 3}
   <Value>k__BackingField: 13
   <Effect>k__BackingField: Double

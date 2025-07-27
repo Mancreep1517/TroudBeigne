@@ -5,8 +5,9 @@ using UnityEngine.EventSystems;
 
 public class CardView : MonoBehaviour, IPointerClickHandler
 {
-    [SerializeField] private SpriteRenderer backRenderer;
-    [SerializeField] private SpriteRenderer frontRenderer;
+    [SerializeField] private SpriteRenderer frontRenderer;     // Avant
+    [SerializeField] private SpriteRenderer backRenderer;      // Arrière-plan de face
+    [SerializeField] private SpriteRenderer cardBackRenderer;  // Dos
 
     private Card card;
     private bool isFaceUp = true;
@@ -14,12 +15,14 @@ public class CardView : MonoBehaviour, IPointerClickHandler
     public void Setup(Card card)
     {
         this.card = card;
-        backRenderer.sprite = card.SpriteBack;
+
         frontRenderer.sprite = card.Sprite;
+        backRenderer.sprite = card.SpriteBack;
+
         UpdateVisibility();
     }
 
-    public void Flip (bool faceUp)
+    public void Flip(bool faceUp)
     {
         isFaceUp = faceUp;
         UpdateVisibility();
@@ -28,7 +31,8 @@ public class CardView : MonoBehaviour, IPointerClickHandler
     private void UpdateVisibility()
     {
         frontRenderer.gameObject.SetActive(isFaceUp);
-        backRenderer.gameObject.SetActive(true);
+        backRenderer.gameObject.SetActive(isFaceUp);
+        cardBackRenderer.gameObject.SetActive(!isFaceUp);
     }
 
     public void OnPointerClick(PointerEventData eventData)

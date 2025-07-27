@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Card_09_B
   m_EditorClassIdentifier: 
   <FrontSprite>k__BackingField: {fileID: 5687317896525541773, guid: 966469ebd338e014fb10f3eecd8483f8, type: 3}
-  <BackSprite>k__BackingField: {fileID: 0}
+  <BackSprite>k__BackingField: {fileID: 910358100625835684, guid: 6c8d7d2d0d2d80d47bfbd10a0a9b3b87, type: 3}
   <Value>k__BackingField: 9
   <Effect>k__BackingField: 

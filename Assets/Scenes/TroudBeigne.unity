@@ -374,7 +374,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 319360132}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1876222360}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: DrawCard
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &319360132
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -875,7 +887,7 @@ Transform:
   m_GameObject: {fileID: 1372157105}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4, y: 0, z: 0}
+  m_LocalPosition: {x: 4.82, y: 3.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1004,8 +1016,69 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bff08f56090ba54b8009f99828708aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardDatas: []
+  cardDatas:
+  - {fileID: 11400000, guid: 5e706bcd99d3b544ca146c61af41671b, type: 2}
+  - {fileID: 11400000, guid: 87c3c315c73b7b84b94668f1a0bc876a, type: 2}
+  - {fileID: 11400000, guid: eabb6e12e17ec014ea25d3d0f9b8e422, type: 2}
+  - {fileID: 11400000, guid: 06ac91a9e861977419710b388681810f, type: 2}
+  - {fileID: 11400000, guid: 8ae6acf330a90584cb1a456f1e1091ab, type: 2}
+  - {fileID: 11400000, guid: f2d45a0cb77cf4f40a0c0628de4f9149, type: 2}
+  - {fileID: 11400000, guid: c503972d9cf9aad4b8a94ad1827d5f00, type: 2}
+  - {fileID: 11400000, guid: 0a2d98232d9764b429567ee12723b735, type: 2}
+  - {fileID: 11400000, guid: 0b6e65f2b2e1da34faa1f6ed904adb30, type: 2}
+  - {fileID: 11400000, guid: 8e2d5ba7a0504744cb4c8ac8842206c5, type: 2}
+  - {fileID: 11400000, guid: cf1e01db0c91a0745a2322737af87c14, type: 2}
+  - {fileID: 11400000, guid: 7cab54708085f84488b237d795a05802, type: 2}
+  - {fileID: 11400000, guid: 79912a8a365ed9445b537c8c571a01a6, type: 2}
+  - {fileID: 11400000, guid: 4e1fbee0cf1fe204da52c6af8c6b0a98, type: 2}
+  - {fileID: 11400000, guid: b71d1746f4cc435478d9066e65a47331, type: 2}
+  - {fileID: 11400000, guid: 934d37b2bed39084395cc255c606d0cd, type: 2}
+  - {fileID: 11400000, guid: ad0bf12280affa146b4c8191b47a930b, type: 2}
+  - {fileID: 11400000, guid: 54b62d183631fbd448d39e41583f608c, type: 2}
+  - {fileID: 11400000, guid: a1b3640a159a1834da8ab4b610103c60, type: 2}
+  - {fileID: 11400000, guid: badf5872f24d6eb4f917da3ec2fa317e, type: 2}
+  - {fileID: 11400000, guid: 27881a42ab097874e8e5204c0c986bfb, type: 2}
+  - {fileID: 11400000, guid: 4230355ab9bd2c0468254eeef7ca9d4a, type: 2}
+  - {fileID: 11400000, guid: 4532171d1fed79c48bfd1893952ce61e, type: 2}
+  - {fileID: 11400000, guid: 5565ba728d0852d43875c402e5f9427a, type: 2}
+  - {fileID: 11400000, guid: 6313a16414f81394d8972cbc6cf0c965, type: 2}
+  - {fileID: 11400000, guid: 1387f04320632044c9586899fae2b162, type: 2}
+  - {fileID: 11400000, guid: ed383000a04d3024b8ab28c1d1ee3228, type: 2}
+  - {fileID: 11400000, guid: 5a3b24f3a78e71f4bbea6d78a8797217, type: 2}
+  - {fileID: 11400000, guid: 4675134f8914a9a4a90fac317027e1f1, type: 2}
+  - {fileID: 11400000, guid: d6a3cc5bb26866a4b931528302398937, type: 2}
+  - {fileID: 11400000, guid: 3460e30f1548d7c488ff661f11cf6f0b, type: 2}
+  - {fileID: 11400000, guid: dd26ba0b05e76784a869312f492518cc, type: 2}
+  - {fileID: 11400000, guid: 28c489d86644cb14d930860115bb3814, type: 2}
+  - {fileID: 11400000, guid: 9d03e366a80424b4fabdb86541c65b83, type: 2}
+  - {fileID: 11400000, guid: 3867ca9ac56a4274c84f92e64b541f50, type: 2}
+  - {fileID: 11400000, guid: 4f1146e407f11454d9b4c589db96c24f, type: 2}
+  - {fileID: 11400000, guid: b99196068d0fc3b4db77aa9671f0c6bc, type: 2}
+  - {fileID: 11400000, guid: c00298c22162ca446b969ba6324f8446, type: 2}
+  - {fileID: 11400000, guid: 5afb285a53b42174abde5d0d401172e0, type: 2}
+  - {fileID: 11400000, guid: ce48dea123776754c8a07488ea532ab4, type: 2}
+  - {fileID: 11400000, guid: 210dd7d6bed5f1046adb28ad5c9c9be0, type: 2}
+  - {fileID: 11400000, guid: a731a5f2c2344c84bb2c17830b152c9b, type: 2}
+  - {fileID: 11400000, guid: fd85a00befb73af48a40133c68345cb7, type: 2}
+  - {fileID: 11400000, guid: 16815248df64e184fbac6af36d23ace5, type: 2}
+  - {fileID: 11400000, guid: 0dff59c871c63014c95fc2b19e7edd80, type: 2}
+  - {fileID: 11400000, guid: c6784a34aebba0b4ba963a5a9aae5639, type: 2}
+  - {fileID: 11400000, guid: d7c2504ba58a58c44b81362e8f3d98b5, type: 2}
+  - {fileID: 11400000, guid: d8d9f653cb653fd4198319ca3aa342a0, type: 2}
+  - {fileID: 11400000, guid: 01967e46233a50a43b3b980c5912292d, type: 2}
+  - {fileID: 11400000, guid: 7c3e128e264771a418a2484d06137477, type: 2}
+  - {fileID: 11400000, guid: edb4b942f0ae3ad439f2df2775c4e760, type: 2}
+  - {fileID: 11400000, guid: 70335ec7b3f7d744a90a63fc392485dd, type: 2}
+  - {fileID: 11400000, guid: e22aa95dc1f87234bb5ecd11bd5d860b, type: 2}
+  - {fileID: 11400000, guid: 2af8a53344354784b9fdf239f736e1ea, type: 2}
   cardView: {fileID: 145882098716216281, guid: fc03f398ecea6c849a0b9630f5046f1d, type: 3}
+  playerZones:
+  - {fileID: 2028574794}
+  - {fileID: 1208254649}
+  - {fileID: 1171350084}
+  - {fileID: 1960090258}
+  - {fileID: 1372157106}
+  cardsPerPlayer: 0a0000000b0000000b0000000b0000000b000000
 --- !u!1 &1960090257
 GameObject:
   m_ObjectHideFlags: 0
@@ -1062,7 +1135,7 @@ Transform:
   m_GameObject: {fileID: 2028574793}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4, y: 0, z: 0}
+  m_LocalPosition: {x: -5.77, y: 0.35, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
