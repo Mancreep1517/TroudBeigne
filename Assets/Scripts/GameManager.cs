@@ -14,7 +14,6 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         List<CardData> deck = new(cardDatas);
-
         Shuffle(deck);
 
         int cardIndex = 0;
@@ -24,30 +23,45 @@ public class GameManager : MonoBehaviour
             Transform zone = playerZones[playerIndex];
             int numberOfCards = cardsPerPlayer[playerIndex];
 
-            float spreadAngle = 20f;
-            float startAngle = -spreadAngle * (numberOfCards - 1) / 2f;
+            List<(Card card, CardData data, int drawIndex)> playerCards = new();
 
-            for (int i = 0; i < numberOfCards; i++)
+            for (int i = 0; i < numberOfCards && cardIndex < deck.Count; i++, cardIndex++)
             {
-                if (cardIndex >= deck.Count) break;
-
                 CardData data = deck[cardIndex];
-                cardIndex++;
+                Card card = new(data);
+                playerCards.Add((card, data, i));
+            }
+
+            playerCards.Sort((a, b) =>
+            {
+                int compare = b.card.Value.CompareTo(a.card.Value);
+                if (compare == 0)
+                    return b.drawIndex.CompareTo(a.drawIndex);
+                return compare;
+            });
 
 
+            float spreadAngle = 10f;
+
+            float startAngle = (playerCards.Count == 1) ? 90f :
+                (-spreadAngle * (playerCards.Count - 1) / 2f) + 90f;
+
+            for (int i = 0; i < playerCards.Count; i++)
+            {
                 float angle = startAngle + i * spreadAngle;
-                Quaternion rotation = zone.rotation * Quaternion.Euler(0, 0, angle);
+                Quaternion rotation = zone.rotation * Quaternion.Euler(0, 0, angle - 90f);
 
                 Vector3 offset = Quaternion.Euler(0, 0, angle) * Vector3.right * 2f;
                 Vector3 position = zone.position + zone.rotation * offset;
+                position.z = 0;
 
-
-                CardView card = Instantiate(cardView, position, rotation);
-                Card c = new(data);
-                card.Setup(c);
+                CardView view = Instantiate(cardView, position, rotation);
+                int sortingOrder = playerCards.Count - 1 - i;
+                view.Setup(playerCards[i].card, sortingOrder);
             }
         }
     }
+
 
     private void Shuffle<T>(List<T> list)
     {
@@ -63,6 +77,9 @@ public class GameManager : MonoBehaviour
         Card drawnCard = deck[Random.Range(0, deck.Count)];
         deck.Remove(drawnCard);
         CardView view = Instantiate(cardView);
-        view.Setup(drawnCard);
+
+        int sortingOrder = 99;
+        view.Setup(drawnCard, sortingOrder);
     }
+
 }

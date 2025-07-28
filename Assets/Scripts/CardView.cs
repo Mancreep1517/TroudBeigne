@@ -12,7 +12,7 @@ public class CardView : MonoBehaviour, IPointerClickHandler
     private Card card;
     private bool isFaceUp = true;
 
-    public void Setup(Card card)
+    public void Setup(Card card, int sortingOrder)
     {
         this.card = card;
 
@@ -20,7 +20,24 @@ public class CardView : MonoBehaviour, IPointerClickHandler
         backRenderer.sprite = card.SpriteBack;
 
         UpdateVisibility();
+
+        string sortingLayer = frontRenderer.sortingLayerName;
+
+        frontRenderer.sortingLayerName = sortingLayer;
+        backRenderer.sortingLayerName = sortingLayer;
+        cardBackRenderer.sortingLayerName = sortingLayer;
+
+        frontRenderer.sortingOrder = sortingOrder + 1;
+        backRenderer.sortingOrder = sortingOrder;
+        cardBackRenderer.sortingOrder = sortingOrder;
+
+        int layer = gameObject.layer;
+        frontRenderer.gameObject.layer = layer;
+        backRenderer.gameObject.layer = layer;
+        cardBackRenderer.gameObject.layer = layer;
     }
+
+
 
     public void Flip(bool faceUp)
     {
