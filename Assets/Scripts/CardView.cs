@@ -1,60 +1,95 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
-public class CardView : MonoBehaviour, IPointerClickHandler
+public class CardView : MonoBehaviour
 {
-    [SerializeField] private SpriteRenderer frontRenderer;     // Avant
-    [SerializeField] private SpriteRenderer backRenderer;      // Arrière-plan de face
-    [SerializeField] private SpriteRenderer cardBackRenderer;  // Dos
-
+    [SerializeField] private SpriteRenderer frontRenderer;
+    [SerializeField] private SpriteRenderer cardBackRenderer;
+    [SerializeField] private float flipSpeed = 300f;
+    private CardPlay cardPlay;
     private Card card;
-    private bool isFaceUp = true;
+
+    private bool isFaceUp = false;
+    private bool isFlipping = false;
+
+    private void Start()
+    {
+        cardPlay = GetComponentInParent<CardPlay>();
+    }
 
     public void Setup(Card card, int sortingOrder)
     {
         this.card = card;
 
         frontRenderer.sprite = card.Sprite;
-        backRenderer.sprite = card.SpriteBack;
-
-        UpdateVisibility();
 
         string sortingLayer = frontRenderer.sortingLayerName;
-
         frontRenderer.sortingLayerName = sortingLayer;
-        backRenderer.sortingLayerName = sortingLayer;
         cardBackRenderer.sortingLayerName = sortingLayer;
 
-        frontRenderer.sortingOrder = sortingOrder + 1;
-        backRenderer.sortingOrder = sortingOrder;
+        frontRenderer.sortingOrder = sortingOrder;
         cardBackRenderer.sortingOrder = sortingOrder;
 
         int layer = gameObject.layer;
         frontRenderer.gameObject.layer = layer;
-        backRenderer.gameObject.layer = layer;
         cardBackRenderer.gameObject.layer = layer;
     }
 
-
-
-    public void Flip(bool faceUp)
+    public void UpdateFaceUp(bool faceUp)
     {
         isFaceUp = faceUp;
         UpdateVisibility();
     }
 
+    public void FlipCardAnimated()
+    {
+        if (!isFlipping)
+        {
+            StartCoroutine(FlipCoroutine());
+        }
+    }
+
+    private IEnumerator FlipCoroutine()
+    {
+        isFlipping = true;
+
+        float halfway = 90f;
+        float currentY = 0f;
+        float elapsed = 0f;
+        float duration = halfway / flipSpeed;
+
+        Vector3 baseEuler = transform.localEulerAngles;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float yRotation = Mathf.Lerp(currentY, halfway, elapsed / duration);
+            transform.localEulerAngles = new Vector3(baseEuler.x, yRotation, baseEuler.z);
+            yield return null;
+        }
+
+        isFaceUp = !isFaceUp;
+        UpdateVisibility();
+
+        elapsed = 0f;
+        currentY = 90f;
+        duration = 90f / flipSpeed;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float yRotation = Mathf.Lerp(currentY, 0f, elapsed / duration);
+            transform.localEulerAngles = new Vector3(baseEuler.x, yRotation, baseEuler.z);
+            yield return null;
+        }
+
+        transform.localEulerAngles = baseEuler;
+        isFlipping = false;
+    }
+
     private void UpdateVisibility()
     {
         frontRenderer.gameObject.SetActive(isFaceUp);
-        backRenderer.gameObject.SetActive(isFaceUp);
         cardBackRenderer.gameObject.SetActive(!isFaceUp);
-    }
-
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        card.PerformEffect();
-        Destroy(gameObject);
     }
 }

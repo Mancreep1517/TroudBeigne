@@ -15,7 +15,6 @@ public class Card
     }
 
     public Sprite Sprite => cardData.FrontSprite;
-    public Sprite SpriteBack => cardData.BackSprite;
     public int Value { get; set; }
     public string Effect { get; set; }
 

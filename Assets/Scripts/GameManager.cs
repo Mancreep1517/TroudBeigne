@@ -7,9 +7,13 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private List<CardData> cardDatas;
     [SerializeField] private CardView cardView;
+    [SerializeField] private CardPlay cardPlay;
     [SerializeField] private List<Transform> playerZones;
     [SerializeField] private List<int> cardsPerPlayer;
+    [SerializeField] private Transform centerPile;
     private List<Card> deck;
+
+    public int turn = 0;
 
     private void Start()
     {
@@ -22,6 +26,8 @@ public class GameManager : MonoBehaviour
         {
             Transform zone = playerZones[playerIndex];
             int numberOfCards = cardsPerPlayer[playerIndex];
+
+            zone.transform.Translate(0.0f, -18.5f, 0.0f);
 
             List<(Card card, CardData data, int drawIndex)> playerCards = new();
 
@@ -40,11 +46,15 @@ public class GameManager : MonoBehaviour
                 return compare;
             });
 
+            float spreadAngle = 1f;
 
-            float spreadAngle = 10f;
+            if (playerIndex == 0)
+            {
+                spreadAngle = 4f;
+            }
 
-            float startAngle = (playerCards.Count == 1) ? 90f :
-                (-spreadAngle * (playerCards.Count - 1) / 2f) + 90f;
+                float startAngle = (playerCards.Count == 1) ? 90f :
+                    (-spreadAngle * (playerCards.Count - 1) / 2f) + 90f;
 
             for (int i = 0; i < playerCards.Count; i++)
             {
@@ -52,12 +62,18 @@ public class GameManager : MonoBehaviour
                 Quaternion rotation = zone.rotation * Quaternion.Euler(0, 0, angle - 90f);
 
                 Vector3 offset = Quaternion.Euler(0, 0, angle) * Vector3.right * 2f;
-                Vector3 position = zone.position + zone.rotation * offset;
+                Vector3 position = zone.position + zone.rotation * (offset * 10);
                 position.z = 0;
 
                 CardView view = Instantiate(cardView, position, rotation);
+
+                CardPlay play = view.GetComponent<CardPlay>();
+                play.playerNumber = playerIndex;
+
                 int sortingOrder = playerCards.Count - 1 - i;
                 view.Setup(playerCards[i].card, sortingOrder);
+
+                view.UpdateFaceUp(playerIndex == 0);
             }
         }
     }
