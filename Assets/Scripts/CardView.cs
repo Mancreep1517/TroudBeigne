@@ -5,9 +5,10 @@ public class CardView : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer frontRenderer;
     [SerializeField] private SpriteRenderer cardBackRenderer;
-    [SerializeField] private float flipSpeed = 300f;
+    [SerializeField] private float flipSpeed = 600f;
     private CardPlay cardPlay;
     private Card card;
+    public Card Card => card;
 
     private bool isFaceUp = false;
     private bool isFlipping = false;
@@ -58,13 +59,14 @@ public class CardView : MonoBehaviour
         float elapsed = 0f;
         float duration = halfway / flipSpeed;
 
-        Vector3 baseEuler = transform.localEulerAngles;
+        Vector3 currentEuler = transform.localEulerAngles;
 
         while (elapsed < duration)
         {
             elapsed += Time.deltaTime;
+            currentEuler = transform.localEulerAngles;
             float yRotation = Mathf.Lerp(currentY, halfway, elapsed / duration);
-            transform.localEulerAngles = new Vector3(baseEuler.x, yRotation, baseEuler.z);
+            transform.localEulerAngles = new Vector3(currentEuler.x, yRotation, currentEuler.z);
             yield return null;
         }
 
@@ -78,12 +80,15 @@ public class CardView : MonoBehaviour
         while (elapsed < duration)
         {
             elapsed += Time.deltaTime;
+            currentEuler = transform.localEulerAngles;
             float yRotation = Mathf.Lerp(currentY, 0f, elapsed / duration);
-            transform.localEulerAngles = new Vector3(baseEuler.x, yRotation, baseEuler.z);
+
+            transform.localEulerAngles = new Vector3(currentEuler.x, yRotation, currentEuler.z);
             yield return null;
         }
 
-        transform.localEulerAngles = baseEuler;
+        currentEuler = transform.localEulerAngles;
+        transform.localEulerAngles = new Vector3(currentEuler.x, 0f, currentEuler.z);
         isFlipping = false;
     }
 
@@ -92,4 +97,31 @@ public class CardView : MonoBehaviour
         frontRenderer.gameObject.SetActive(isFaceUp);
         cardBackRenderer.gameObject.SetActive(!isFaceUp);
     }
+
+    public IEnumerator MoveToPosition(Vector3 targetPos, Quaternion targetRot, float duration, bool flipDuring = false)
+    {
+        Vector3 startPos = transform.position;
+        Quaternion startRot = transform.rotation;
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float t = elapsed / duration;
+            t = 1f - Mathf.Pow(1f - t, 3);
+
+            transform.position = Vector3.Lerp(startPos, targetPos, t);
+            transform.rotation = Quaternion.Slerp(startRot, targetRot, t);
+            yield return null;
+        }
+
+        transform.position = targetPos;
+        transform.rotation = targetRot;
+
+        if (flipDuring)
+        {
+            FlipCardAnimated();
+        }
+    }
+
 }

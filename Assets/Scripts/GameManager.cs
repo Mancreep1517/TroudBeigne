@@ -13,67 +13,97 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Transform centerPile;
     private List<Card> deck;
 
+    public List<CardPlay> selectedCards = new();
+    public List<CardPlay> playedCards = new();
+
     public int turn = 0;
 
     private void Start()
     {
-        List<CardData> deck = new(cardDatas);
-        Shuffle(deck);
+        StartCoroutine(DistributeCards());
+    }
 
+    private IEnumerator DistributeCards()
+    {
+        List<CardData> workingDeck = new(cardDatas);
+        Shuffle(workingDeck);
         int cardIndex = 0;
 
-        for (int playerIndex = 0; playerIndex < playerZones.Count; playerIndex++)
+        foreach (Transform zone in playerZones)
         {
-            Transform zone = playerZones[playerIndex];
-            int numberOfCards = cardsPerPlayer[playerIndex];
-
             zone.transform.Translate(0.0f, -18.5f, 0.0f);
+        }
 
-            List<(Card card, CardData data, int drawIndex)> playerCards = new();
+        List<List<(Card card, CardData data, int drawIndex)>> playerHands = new();
+        List<List<(Card card, CardData data, int drawIndex)>> distributionOrders = new();
+        for (int i = 0; i < playerZones.Count; i++)
+        {
+            playerHands.Add(new List<(Card, CardData, int)>());
+            distributionOrders.Add(new List<(Card, CardData, int)>());
+        }
 
-            for (int i = 0; i < numberOfCards && cardIndex < deck.Count; i++, cardIndex++)
+        for (int player = 0; player < playerZones.Count; player++)
+        {
+            int count = cardsPerPlayer[player];
+            for (int i = 0; i < count && cardIndex < workingDeck.Count; i++, cardIndex++)
             {
-                CardData data = deck[cardIndex];
+                CardData data = workingDeck[cardIndex];
                 Card card = new(data);
-                playerCards.Add((card, data, i));
+                playerHands[player].Add((card, data, i));
             }
 
-            playerCards.Sort((a, b) =>
+            distributionOrders[player] = new List<(Card, CardData, int)>(playerHands[player]);
+            distributionOrders[player].Sort((a, b) =>
             {
-                int compare = b.card.Value.CompareTo(a.card.Value);
-                if (compare == 0)
-                    return b.drawIndex.CompareTo(a.drawIndex);
-                return compare;
+                int compare = a.card.Value.CompareTo(b.card.Value); // tri croissant pour distribution
+                return compare == 0 ? a.drawIndex.CompareTo(b.drawIndex) : compare;
             });
 
-            float spreadAngle = 1f;
-
-            if (playerIndex == 0)
+            playerHands[player].Sort((a, b) =>
             {
-                spreadAngle = 4f;
-            }
+                int compare = b.card.Value.CompareTo(a.card.Value); // tri décroissant pour affichage
+                return compare == 0 ? b.drawIndex.CompareTo(a.drawIndex) : compare;
+            });
+        }
 
-                float startAngle = (playerCards.Count == 1) ? 90f :
-                    (-spreadAngle * (playerCards.Count - 1) / 2f) + 90f;
+        int maxCards = 0;
+        foreach (var hand in playerHands)
+            maxCards = Mathf.Max(maxCards, hand.Count);
 
-            for (int i = 0; i < playerCards.Count; i++)
+        for (int i = 0; i < maxCards; i++)
+        {
+            for (int playerIndex = 0; playerIndex < playerZones.Count; playerIndex++)
             {
-                float angle = startAngle + i * spreadAngle;
-                Quaternion rotation = zone.rotation * Quaternion.Euler(0, 0, angle - 90f);
+                if (i >= playerHands[playerIndex].Count) continue;
 
+                var (card, _, drawIndex) = distributionOrders[playerIndex][i];
+                Transform zone = playerZones[playerIndex];
+
+                float spreadAngle = (playerIndex == 0) ? 4f : 1f;
+                int totalCards = playerHands[playerIndex].Count;
+
+                float startAngle = (totalCards == 1) ? 90f :
+                    (-spreadAngle * (totalCards - 1) / 2f) + 90f;
+
+                int displayIndex = totalCards - 1 - i;
+
+                float angle = startAngle + displayIndex * spreadAngle;
+                Quaternion targetRot = zone.rotation * Quaternion.Euler(0, 0, angle - 90f);
                 Vector3 offset = Quaternion.Euler(0, 0, angle) * Vector3.right * 2f;
-                Vector3 position = zone.position + zone.rotation * (offset * 10);
-                position.z = 0;
+                Vector3 targetPos = zone.position + zone.rotation * (offset * 10);
+                targetPos.z = 0;
 
-                CardView view = Instantiate(cardView, position, rotation);
-
+                CardView view = Instantiate(cardView, centerPile.position, Quaternion.identity);
                 CardPlay play = view.GetComponent<CardPlay>();
                 play.playerNumber = playerIndex;
 
-                int sortingOrder = playerCards.Count - 1 - i;
-                view.Setup(playerCards[i].card, sortingOrder);
+                int sortingOrder = i;
+                view.Setup(card, sortingOrder);
+                view.UpdateFaceUp(false);
 
-                view.UpdateFaceUp(playerIndex == 0);
+                bool flipDuringMove = (playerIndex == 0);
+                StartCoroutine(view.MoveToPosition(targetPos, targetRot, 0.3f, flipDuringMove));
+                yield return new WaitForSeconds(0.1f);
             }
         }
     }
@@ -90,12 +120,47 @@ public class GameManager : MonoBehaviour
 
     public void DrawCard()
     {
-        Card drawnCard = deck[Random.Range(0, deck.Count)];
-        deck.Remove(drawnCard);
-        CardView view = Instantiate(cardView);
+        selectedCards.Clear();
+        foreach (CardPlay cp in FindObjectsOfType<CardPlay>())
+        {
+            if (cp.isSelected && !cp.isPlayed)
+            {
+                selectedCards.Add(cp);
+            }
+        }
 
-        int sortingOrder = 99;
-        view.Setup(drawnCard, sortingOrder);
+        if (selectedCards.Count == 0)
+        {
+            Debug.Log("Il doit y avoir au moins une carte de sélectionné.");
+            return;
+        }
+
+        int refValue = selectedCards[0].GetComponentInParent<CardView>().Card.Value;
+        foreach (var cp in selectedCards)
+        {
+            if (cp.GetComponentInParent<CardView>().Card.Value != refValue)
+            {
+                Debug.Log("Toutes les cartes doivent avoir la même valeur.");
+                return;
+            }
+        }
+
+        float spacing = 1.5f;
+        float totalWidth = (selectedCards.Count - 1) * spacing;
+        float startOffset = -totalWidth / 2f;
+
+        for (int i = 0; i < selectedCards.Count; i++)
+        {
+            CardPlay cp = selectedCards[i];
+            Vector3 offset = centerPile.position + Vector3.right * (startOffset + i * spacing);
+
+            cp.isPlayed = true;
+            playedCards.Add(cp);
+
+            Quaternion centerRot = Quaternion.identity;
+            cp.StartCoroutine(cp.MoveToPosition(offset, 0.4f));
+        }
+
+        selectedCards.Clear();
     }
-
 }

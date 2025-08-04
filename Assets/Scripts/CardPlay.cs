@@ -9,8 +9,9 @@ public class CardPlay : MonoBehaviour, IPointerClickHandler
     private GameManager gameManager;
 
     public int playerNumber;
-    private bool isSelected = false;
-    private Coroutine moveCoroutine;
+    public bool isSelected = false;
+    public bool isPlayed = false;
+    public Coroutine moveCoroutine;
 
     private void Start()
     {
@@ -45,12 +46,12 @@ public class CardPlay : MonoBehaviour, IPointerClickHandler
             targetPosition = transform.position - transform.up * distance;
         }
 
-        moveCoroutine = StartCoroutine(MoveToPosition(targetPosition, 0.4f)); // durée en secondes
+        moveCoroutine = StartCoroutine(MoveToPosition(targetPosition, 0.3f));
 
         isSelected = !isSelected;
     }
 
-    private IEnumerator MoveToPosition(Vector3 target, float duration)
+    public IEnumerator MoveToPosition(Vector3 target, float duration)
     {
         Vector3 start = transform.position;
         float elapsed = 0f;
